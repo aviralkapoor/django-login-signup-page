@@ -11,7 +11,7 @@ def signup_action(request):
             return redirect('login')
         else:
             return HttpResponse("Failed to save data.")
-    else:
+    else: #method == "GET"
         form = SignupForm()
     return render(request, 'signup/signup.html', {'form':form})
 

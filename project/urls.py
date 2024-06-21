@@ -22,6 +22,7 @@ from signup import views as signup
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login.welcome, name="welcome"),
+    path('error/', login.error, name="error"),
     path('login/', login.login_action, name="login"),
     path('logout/', login.logout_action, name="logout"),
     path('signup/', signup.signup_action, name='signup')

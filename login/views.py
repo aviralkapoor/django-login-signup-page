@@ -7,6 +7,9 @@ from .forms import LoginForm
 def welcome(request):
     return render(request, 'login/welcome.html')
 
+def error(request):
+    return render(request, 'login/error.html')
+
 def login_action(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -18,9 +21,11 @@ def login_action(request):
             if user:
                 login(request, user)
                 return redirect('welcome')
+            else:
+                return redirect('error')
         else:
             return HttpResponse("Failed to save data.")
-    else:
+    else: #method == "GET"
         form = LoginForm()
     return render(request, 'login/login.html', {'form':form})
 

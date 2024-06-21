@@ -9,7 +9,7 @@ class SignupForm(UserCreationForm):
 		required=True,
 		widget=forms.TextInput(
 			attrs={
-				"placeholder": "Unique User Name",
+				"placeholder": "User Name",
 				"class": "form-control"
 			}
 		)
@@ -48,6 +48,15 @@ class SignupForm(UserCreationForm):
             }
         )
     )
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+    gender = forms.ChoiceField(
+        choices=GENDER_CHOICES,
+        initial='M'
+    )
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'dob')
+        fields = ('username', 'email', 'dob', 'gender')
